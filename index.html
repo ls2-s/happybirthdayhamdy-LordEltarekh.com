@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كل سنة وانت طيب يا حمدون💋🌎</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { min-height: 100%; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: #000814;
+  color: #fff;
+}
+
+/* ============================================
+   🌌 خلفية السماء الليلية
+   ============================================ */
+.night-sky {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  background:
+    radial-gradient(ellipse at top, #0a1a3a 0%, #000814 40%, #000 100%),
+    linear-gradient(180deg, #0a1a3a 0%, #000814 100%);
+}
+.night-sky::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 70% 20%,
+    rgba(100, 150, 255, 0.15),
+    transparent 50%
+  );
+}
+
+/* ============================================
+   🌙 القمر
+   ============================================ */
+.moon {
+  position: fixed;
+  top: 7%;
+  left: 8%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fffbe8 30%, #f0e6c8 60%, #d4c49a 100%);
+  box-shadow:
+    0 0 40px rgba(255, 250, 220, 1),
+    0 0 80px rgba(255, 250, 220, 0.8),
+    0 0 140px rgba(255, 250, 220, 0.5),
+    0 0 200px rgba(255, 240, 180, 0.3),
+    inset -8px -8px 20px rgba(180, 160, 100, 0.3);
+  z-index: -3;
+  animation: moonGlow 3s ease-in-out infinite alternate;
+}
+@keyframes moonGlow {
+  0% {
+    box-shadow:
+      0 0 40px rgba(255, 250, 220, 1),
+      0 0 80px rgba(255, 250, 220, 0.8),
+      0 0 140px rgba(255, 250, 220, 0.5),
+      0 0 200px rgba(255, 240, 180, 0.3),
+      inset -8px -8px 20px rgba(180, 160, 100, 0.3);
+  }
+  100% {
+    box-shadow:
+      0 0 60px rgba(255, 255, 240, 1),
+      0 0 120px rgba(255, 250, 220, 1),
+      0 0 200px rgba(255, 250, 220, 0.7),
+      0 0 300px rgba(255, 240, 180, 0.5),
+      inset -8px -8px 20px rgba(180, 160, 100, 0.3);
+  }
+}
+
+.moon::before {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 250, 220, 0.35), transparent 70%);
+  animation: haloPulse 3s ease-in-out infinite alternate;
+  z-index: -1;
+}
+@keyframes haloPulse {
+  0%   { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* ============================================
+   ⭐ النجوم
+   ============================================ */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+}
+.stars i {
+  position: absolute;
+  border-radius: 50%;
+  animation: twinkle 2.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.7); }
+  50%      { opacity: 1;    transform: scale(1.4); }
+}
+.stars i.big {
+  animation: twinkleBig 2s ease-in-out infinite;
+}
+@keyframes twinkleBig {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.8); }
+}
+
+/* ============================================
+   🌠 6 نيازك
+   ============================================ */
+.shooting-stars {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.shooting-stars span {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  border-radius: 999px;
+  filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px #64d2ff);
+  opacity: 0;
+  transform: rotate(-35deg);
+  animation: shoot 9s linear infinite;
+}
+.shooting-stars span:nth-child(1) { top: 5%;  left: -20%; animation-delay: 0s; }
+.shooting-stars span:nth-child(2) { top: 20%; left: -20%; animation-delay: 1.5s; }
+.shooting-stars span:nth-child(3) { top: 35%; left: -20%; animation-delay: 3s; }
+.shooting-stars span:nth-child(4) { top: 50%; left: -20%; animation-delay: 4.5s; }
+.shooting-stars span:nth-child(5) { top: 65%; left: -20%; animation-delay: 6s; }
+.shooting-stars span:nth-child(6) { top: 80%; left: -20%; animation-delay: 7.5s; }
+
+@keyframes shoot {
+  0%   { opacity: 0; transform: translate(0,0) rotate(-35deg); }
+  5%   { opacity: 1; }
+  30%  { opacity: 1; }
+  60%  { opacity: 0; transform: translate(130vw, 70vh) rotate(-35deg); }
+  100% { opacity: 0; transform: translate(130vw, 70vh) rotate(-35deg); }
+}
+
+/* ============================================
+   🟢 Matrix
+   ============================================ */
+.matrix-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+.matrix-rain span {
+  position: absolute;
+  top: -15vh;
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow:
+    0 0 5px #00ff88,
+    0 0 10px #00ff88,
+    0 0 20px #00aa55;
+  animation: matrixFall linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes matrixFall {
+  0%   { transform: translateY(-15vh); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(115vh); opacity: 0; }
+}
+
+/* ============================================
+   🎯 المحتوى الرئيسي
+   ============================================ */
+.main-content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  text-shadow:
+    0 0 10px rgba(100, 200, 255, 0.9),
+    0 0 25px rgba(100, 150, 255, 0.6);
+}
+.title .name {
+  color: #64d2ff;
+  display: block;
+  font-size: 2.4rem;
+  margin-top: 10px;
+  text-shadow:
+    0 0 15px #64d2ff,
+    0 0 35px #4a90e2,
+    0 0 60px #2c5aa0;
+}
+
+.age-badge {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #000814;
+  background: linear-gradient(135deg, #64d2ff, #00ff88);
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-top: 18px;
+  margin-bottom: 30px;
+  box-shadow:
+    0 0 15px rgba(100, 210, 255, 0.7),
+    0 0 30px rgba(0, 255, 136, 0.4);
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   💬 الرسالة
+   ============================================ */
+.message {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #e2e8f0;
+  margin: 0 0 35px;
+  max-width: 90%;
+  text-shadow: 0 0 8px rgba(100, 210, 255, 0.5);
+}
+
+/* ============================================
+   🎁 زر المفاجأة
+   ============================================ */
+.btn {
+  background: linear-gradient(135deg, #64d2ff, #00ff88);
+  color: #000814;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  box-shadow:
+    0 0 20px rgba(100, 210, 255, 0.7),
+    0 6px 18px rgba(0, 255, 136, 0.4);
+  transition: transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: 1px;
+}
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   ⏱️ العداد
+   ============================================ */
+.countdown-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(10, 26, 58, 0.96), rgba(0, 8, 20, 0.99));
+}
+.countdown-screen.show { display: flex; }
+.countdown-screen .num {
+  font-size: 8rem;
+  font-weight: bold;
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  animation: countPop 1s ease;
+  text-shadow:
+    0 0 20px #00ff88,
+    0 0 40px #00aa55,
+    0 0 60px #00ff88;
+}
+@keyframes countPop {
+  0%   { transform: scale(0.3); opacity: 0; }
+  60%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================
+   🎊 رسالة المفاجأة
+   ============================================ */
+.surprise-msg {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(10, 26, 58, 0.97), rgba(0, 8, 20, 0.99));
+  padding: 20px;
+  overflow-y: auto;
+}
+.surprise-msg.show { display: flex; }
+
+.msg-box {
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  animation: boxIn 0.8s ease;
+}
+@keyframes boxIn {
+  0%   { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.msg-box .greet {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 20px;
+  text-shadow:
+    0 0 15px #00ff88,
+    0 0 35px #00aa55,
+    0 0 60px #00ff88;
+  animation: glowGreen 1.5s ease-in-out infinite alternate;
+}
+@keyframes glowGreen {
+  0%   { text-shadow: 0 0 15px #00ff88, 0 0 35px #00aa55, 0 0 60px #00ff88; }
+  100% { text-shadow: 0 0 25px #fff, 0 0 50px #00ff88, 0 0 90px #00aa55; }
+}
+
+.msg-box .big {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #64d2ff;
+  margin-bottom: 25px;
+  text-shadow:
+    0 0 15px #64d2ff,
+    0 0 35px #4a90e2;
+  animation: glowBlue 1.5s ease-in-out infinite alternate;
+}
+@keyframes glowBlue {
+  0%   { text-shadow: 0 0 15px #64d2ff, 0 0 35px #4a90e2; }
+  100% { text-shadow: 0 0 25px #fff, 0 0 50px #64d2ff, 0 0 80px #4a90e2; }
+}
+
+.msg-box .body-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #e2e8f0;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(100, 210, 255, 0.4);
+}
+
+.msg-box .english {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin: 20px 0 10px;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 15px #ffd700,
+    0 0 30px #ffaa00;
+}
+
+.msg-box .sweet {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #00ff88, #64d2ff, #00ff88);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(100, 210, 255, 0.9));
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ============================================
+   🎆 ألعاب نارية
+   ============================================ */
+.firework {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99;
+  animation: explode 1.3s ease-out forwards;
+  will-change: transform, opacity;
+}
+@keyframes explode {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(18); opacity: 0; }
+}
+
+/* ============================================
+   💚 توقيع الهاكر (أسفل يسار)
+   ============================================ */
+.dev-signature {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  z-index: 200;
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: #00ff88;
+  line-height: 1.5;
+  text-align: left;
+  direction: ltr;
+  padding: 10px 14px;
+  background: rgba(0, 8, 20, 0.85);
+  border-left: 2px solid #00ff88;
+  border-radius: 0 8px 8px 0;
+  text-shadow:
+    0 0 6px #00ff88,
+    0 0 12px #00aa55;
+  pointer-events: none;
+  box-shadow:
+    0 0 15px rgba(0, 255, 136, 0.4),
+    inset 0 0 10px rgba(0, 255, 136, 0.05);
+  animation: sigGlow 2s ease-in-out infinite alternate;
+  max-width: 75vw;
+}
+@keyframes sigGlow {
+  0% {
+    text-shadow: 0 0 6px #00ff88, 0 0 12px #00aa55;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4), inset 0 0 10px rgba(0, 255, 136, 0.05);
+    border-left-color: #00ff88;
+  }
+  100% {
+    text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00aa55;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.7), inset 0 0 15px rgba(0, 255, 136, 0.1);
+    border-left-color: #64ffb0;
+  }
+}
+.dev-signature .line {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dev-signature .label {
+  color: #64d2ff;
+  text-shadow: 0 0 6px #64d2ff;
+}
+.dev-signature .tag {
+  color: #ffd700;
+  text-shadow: 0 0 6px #ffd700;
+  font-weight: bold;
+}
+.dev-signature .dev-name {
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-shadow: 0 0 8px #00ff88, 0 0 16px #00aa55;
+}
+.dev-signature .dev-name::before {
+  content: '> ';
+  color: #00ff88;
+}
+.dev-signature .cursor {
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  background: #00ff88;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+  box-shadow: 0 0 8px #00ff88;
+}
+@keyframes blink {
+  0%, 50%  { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ============================================
+   📱 الموبايل
+   ============================================ */
+@media (max-width: 480px) {
+  .title { font-size: 1.4rem; }
+  .title .name { font-size: 1.9rem; }
+  .age-badge { font-size: 0.85rem; padding: 5px 14px; }
+  .message { font-size: 0.95rem; }
+  .btn { padding: 14px 32px; font-size: 1rem; }
+  .countdown-screen .num { font-size: 6rem; }
+
+  .moon { width: 80px; height: 80px; top: 5%; left: 5%; }
+
+  .msg-box .greet { font-size: 1.5rem; }
+  .msg-box .big { font-size: 1.3rem; }
+  .msg-box .body-text { font-size: 0.95rem; }
+  .msg-box .english { font-size: 1.1rem; }
+  .msg-box .sweet { font-size: 1.6rem; }
+
+  .dev-signature {
+    font-size: 0.62rem;
+    padding: 8px 10px;
+    bottom: 8px;
+    left: 8px;
+  }
+  .dev-signature .dev-name { font-size: 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- 🌌 السماء -->
+<div class="night-sky"></div>
+
+<!-- 🌙 القمر -->
+<div class="moon"></div>
+
+<!-- ⭐ النجوم -->
+<div class="stars" id="stars"></div>
+
+<!-- 🌠 6 نيازك -->
+<div class="shooting-stars">
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+</div>
+
+<!-- 🟢 Matrix -->
+<div class="matrix-rain" id="matrixRain"></div>
+
+<!-- 🎯 المحتوى -->
+<main class="main-content">
+  <h1 class="title">
+    كل سنة وانت طيب يا
+    <span class="name">حمدي🌚♥</span>
+  </h1>
+
+  <div class="age-badge">🎂+1 plus year🎂</div>
+
+  <!-- ✨ الكلام اللي كان جوه بقى بره -->
+  <p class="message">
+    ربنا يوفقك في حياتك ويحقق كل أحلامك<br>
+    وتفضل دايماً من نجاح لنجاح 🏆<br>
+    وعقبال مية سنة وانت بصحه وبخير  💙<br>
+    ربنا يوفقك ويبعد عنك العزوبية (قريب) 😂💀<br>
+    وتلاقي بنت الحلال اللي تاخدك بشنطت هدومك 🧳😄
+  </p>
+
+  <button class="btn" onclick="startCountdown()">😁بص كد ي حمدون😁</button>
+</main>
+
+<!-- ⏱️ العداد -->
+<div class="countdown-screen" id="countdownScreen">
+  <div class="num" id="countdownNum">5</div>
+</div>
+
+<!-- 🎊 المفاجأة -->
+<div class="surprise-msg" id="surpriseMsg">
+  <div class="msg-box">
+    <p class="greet">كل سنة وانت طيب يا حمدي 🎉</p>
+    <p class="big">عشرين سنة  💪</p>
+    <!-- ✨ الكلام اللي كان بره بقى جوه -->
+    <p class="body-text">
+      عشرين سنة من الرجولة والجدعنة،<br>
+      كل عام وانت في تقدم ونجاح،<br>
+      ربنا يوفقك ويحقق كل أحلامك 💙
+    </p>
+    <p class="english">Happy Birthday 🎂</p>
+    <p class="sweet">Sweet 20 ✨</p>
+  </div>
+</div>
+
+<!-- 💚 توقيع الهاكر (ظاهر في كل الصفحات) -->
+<div class="dev-signature">
+  <span class="line"><span class="label">[ DevFromLord ]</span></span>
+  <span class="line"><span class="label">Phone:</span> 01221143060</span>
+  <span class="line"><span class="label">Telegram:</span> <span class="tag">@hkrroy</span></span>
+  <span class="line"><span class="dev-name">زياد ابن اسيوط — أفجر مطور في مجالك😁</span><span class="cursor"></span></span>
+</div>
+
+<audio id="song" loop preload="auto" playsinline>
+  <source src="birthday.m4a" type="audio/mp4">
+</audio>
+
+<script>
+/* ===== النجوم ===== */
+(function() {
+  const layer = document.getElementById('stars');
+  const count = window.innerWidth < 600 ? 80 : 180;
+  const colors = ['#ffffff', '#cfe8ff', '#a8d8ff', '#fff5cc', '#ffe9c4'];
+  let html = '';
+  for (let i = 0; i < count; i++) {
+    const isBig = Math.random() < 0.15;
+    const size = isBig
+      ? (Math.random() * 2.5 + 2.5).toFixed(1)
+      : (Math.random() * 2 + 0.8).toFixed(1);
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const delay = (Math.random() * 4).toFixed(1);
+    const dur = (Math.random() * 1.5 + 2).toFixed(1);
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const glowSize = isBig ? 15 : 8;
+    const className = isBig ? ' class="big"' : '';
+    html += '<i'+className+' style="left:'+x+'%;top:'+y+'%;width:'+size+'px;height:'+size+'px;animation-delay:'+delay+'s;animation-duration:'+dur+'s;background:'+color+';box-shadow:0 0 '+glowSize+'px '+color+',0 0 '+(glowSize*2)+'px '+color+';"></i>';
+  }
+  layer.innerHTML = html;
+})();
+
+/* ===== كلمات Matrix ===== */
+(function() {
+  const layer = document.getElementById('matrixRain');
+  const words = [
+    'HAPPY', 'BIRTHDAY', '20', '★', 'Hamdoun🌎', '💋',
+    'كل سنة وانت طيب', 'يا حمدي', 'عشرين سنة', 'مبروك', 'بطل',
+    '🌎', '💪', '🎂', '🎉', '🏆', '⭐', '💙',
+    'ياتقيل', '🌎', 'YEAR', '20', '★',
+    'Happy Birthday', 'Sweet 20', '★', '20', '★'
+  ];
+  const count = window.innerWidth < 600 ? 25 : 45;
+  let html = '';
+
+  for (let i = 0; i < count; i++) {
+    const word = words[Math.floor(Math.random() * words.length)];
+    const x = Math.random() * 100;
+    const delay = (Math.random() * 12).toFixed(1);
+    const dur = (Math.random() * 5 + 6).toFixed(1);
+    const size = (Math.random() * 0.4 + 0.9).toFixed(2);
+    const opacity = (Math.random() * 0.4 + 0.6).toFixed(2);
+    const isArabic = /[\u0600-\u06FF]/.test(word);
+    const fontFamily = isArabic ? "'Segoe UI', Tahoma, sans-serif" : "'Courier New', monospace";
+
+    html += '<span style="'
+      + 'left:' + x + '%;'
+      + 'animation-delay:' + delay + 's;'
+      + 'animation-duration:' + dur + 's;'
+      + 'font-size:' + size + 'rem;'
+      + 'font-family:' + fontFamily + ';'
+      + 'opacity:' + opacity + ';'
+      + '">' + word + '</span>';
+  }
+  layer.innerHTML = html;
+})();
+
+/* ===== الموسيقى ===== */
+const song = document.getElementById('song');
+song.volume = 0.7;
+let musicPlaying = false;
+
+function tryPlay() {
+  const p = song.play();
+  if (p !== undefined) {
+    p.then(function() { musicPlaying = true; }).catch(function() {});
+  }
+}
+tryPlay();
+window.addEventListener('load', tryPlay);
+song.addEventListener('canplay', tryPlay);
+
+function startOnInteract() {
+  if (!musicPlaying) song.play().catch(function() {});
+  ['click','touchstart','keydown','scroll'].forEach(function(e) {
+    document.removeEventListener(e, startOnInteract);
+  });
+}
+['click','touchstart','keydown','scroll'].forEach(function(e) {
+  document.addEventListener(e, startOnInteract, { once: true, passive: true });
+});
+
+song.addEventListener('play', function() { musicPlaying = true; });
+song.addEventListener('pause', function() { musicPlaying = false; });
+
+/* ===== العداد ===== */
+let counting = false;
+
+function startCountdown() {
+  if (counting) return;
+  counting = true;
+
+  if (!musicPlaying) song.play().catch(function() {});
+
+  const screen = document.getElementById('countdownScreen');
+  const numEl = document.getElementById('countdownNum');
+  const surprise = document.getElementById('surpriseMsg');
+
+  screen.classList.add('show');
+
+  let num = 5;
+  numEl.textContent = num;
+  numEl.style.animation = 'none';
+  void numEl.offsetWidth;
+  numEl.style.animation = 'countPop 1s ease';
+
+  const interval = setInterval(function() {
+    num--;
+    if (num > 0) {
+      numEl.textContent = num;
+      numEl.style.animation = 'none';
+      void numEl.offsetWidth;
+      numEl.style.animation = 'countPop 1s ease';
+    } else {
+      clearInterval(interval);
+      screen.classList.remove('show');
+      surprise.classList.add('show');
+      launchFireworks();
+      counting = false;
+    }
+  }, 1000);
+}
+
+/* ===== ألعاب نارية ===== */
+function launchFireworks() {
+  const colors = ['#00ff88', '#64d2ff', '#ffd700', '#a8d8ff', '#00ffff'];
+  const burstCount = window.innerWidth < 600 ? 8 : 14;
+
+  for (let i = 0; i < burstCount; i++) {
+    setTimeout(function() {
+      const x = Math.random() * 80 + 10;
+      const y = Math.random() * 60 + 10;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      const fw = document.createElement('div');
+      fw.className = 'firework';
+      fw.style.left = x + 'vw';
+      fw.style.top = y + 'vh';
+      fw.style.background = 'radial-gradient(circle, #fff, ' + color + ')';
+      fw.style.boxShadow = '0 0 15px ' + color + ', 0 0 30px ' + color;
+      document.body.appendChild(fw);
+      setTimeout(function() { fw.remove(); }, 1400);
+    }, i * 180);
+  }
+}
+
+/* لمس الرسالة يقفلها */
+document.getElementById('surpriseMsg').addEventListener('click', function() {
+  this.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
